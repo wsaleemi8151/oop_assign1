@@ -3,7 +3,7 @@
 * PROJECT :       PROG1385-21S-Sec1 Object-oriented Programming: assignment # 01
 * PROGRAMMER :    Gursharan Singh and Waqar Ali Saleemi
 * FIRST VERSION : 6 June, 2021
-* DESCRIPTION :   The functions in this file are used to get input from the user 
+* DESCRIPTION :   The functions in this file are used to get input from the user
 *			      or a file user provided in the input instruction
 *			      and print if the Student is passed or failed.
 */
@@ -30,16 +30,16 @@ int main()
 		fgets(userInput, kBlockSize, stdin);
 		clearCR(userInput);
 
-		char fileProcessChar[1];
-		char fileName[kBlockSize];
+		char fileProcessChar[2] = "";
+		char fileName[kBlockSize] = "";
 
-		sscanf(userInput, "%s %s", fileProcessChar, fileName);
+		int fileProcessResult = sscanf(userInput, "%s %s", fileProcessChar, fileName);
 
 		if (strcmp(userInput, "X") != 0 && strcmp(fileProcessChar, "Z") != 0)
 		{
 			parseUserInput(userInput);
 		}
-		else if (strcmp(fileProcessChar, "Z") == 0)
+		else if (strcmp(fileProcessChar, "Z") == 0 && strlen(fileName) < 0 && fileProcessResult != 2)
 		{
 			FILE* fp = NULL;
 
@@ -47,22 +47,28 @@ int main()
 			if (fp == NULL)
 			{
 				printf("Error: can't open %s for writing\n", fileName);
-				exitCode = 1; // returns 1 if file open failed
+				exitCode = 1;
 			}
-
-			char memBlock[kBlockSize];
-
-			while (fgets(memBlock, sizeof(memBlock), fp) != NULL)
+			else
 			{
-				clearCR(memBlock);
-				parseUserInput(memBlock);
-			}
+				char memBlock[kBlockSize];
 
-			if (fclose(fp) != 0)
-			{
-				printf("Error closing %s file\n", fileName);
-				exitCode = 1; // returns 1 if file close failed
+				while (fgets(memBlock, sizeof(memBlock), fp) != NULL)
+				{
+					clearCR(memBlock);
+					parseUserInput(memBlock);
+				}
+
+				if (fclose(fp) != 0)
+				{
+					printf("Error closing %s file\n", fileName);
+					exitCode = 1; // returns 1 if file close failed
+				}
 			}
+		}
+		else if (strcmp(fileProcessChar, "Z") == 0 && strlen(fileName) == 0)
+		{
+			printf("Invalid input. \n");
 		}
 		else if (strcmp(userInput, "X") == 0)
 		{
@@ -70,7 +76,7 @@ int main()
 		}
 	}
 
-	return exitCode;
+	return 0;
 }
 
 /*

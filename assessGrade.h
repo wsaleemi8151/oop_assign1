@@ -16,3 +16,4 @@ void assessGrade(int num[]);
 void parseUserInput(char* input);
 int checkRange(int value, int mini_value, int max_value);
 int checkSpace(char* input);
+void decimalInputFunction(char* input);

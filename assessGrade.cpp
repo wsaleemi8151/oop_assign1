@@ -164,23 +164,65 @@ void assessGrade(int num[])
  * Returns:     It returns void.
  * Description: This function is used to parse the input provide by user or loaded from a file.
 */
-void parseUserInput(char* input)
+void  parseUserInput(char* input)
 {
-	int num[kNumberOfAssignments] = { 0 };
-	char alphabeticalInput[5];
+	int num[6] = { 0 };
+	char alpha[5];
+	char test[8];
+
+	if (sscanf(input, "%[+/A-U]", &alpha) != 1)
+	{
+		if (sscanf(input, "%*c%[.]", &test) != 1)
+		{
+			if (sscanf(input, "%*c%*c%[.]", &test) != 1)
+			{
+				if (sscanf(input, "%*c%*c%*c%[.]", &test) != 1)
+				{
+					if (sscanf(input, "%d %d %d %d %d", &num[0], &num[1], &num[2], &num[3], &num[4]) != 0)
+					{
+						assessGrade(num);
+					}
+				}
+				else
+				{
+					decimalInputFunction(input);
+				}
+			}
+			else
+			{
+				decimalInputFunction(input);
+			}
+
+		}
+		else
+		{
+			decimalInputFunction(input);
+		}
+	}
+	else
+	{
+		assessGrade(alpha);
+	}
+
+}
+
+/*
+ * Function:    decimalInputFunction()
+ * Parameters:  char* input. A pointer to input string.
+ * Returns:     It returns void.
+ * Description: This function is used to parse the decimal input provide by user or loaded from a file.
+*/
+void decimalInputFunction(char* input)
+{
 	double decimalInput;
 
-	if (sscanf(input, "%[+/A-U]", &alphabeticalInput) == 1 && checkSpace(input) == 0)
+	if (sscanf(input, "%lf", &decimalInput) != 1)
 	{
-		assessGrade(alphabeticalInput);
+		printf("Error in sscanf-1\n\n");
 	}
-	else if (sscanf(input, "%lf", &decimalInput) == 1 && checkSpace(input) == 0)
+	else
 	{
 		assessGrade(decimalInput);
-	}
-	else if (sscanf(input, "%d %d %d %d %d", &num[0], &num[1], &num[2], &num[3], &num[4]) != 0)
-	{
-		assessGrade(num);
 	}
 }
 
