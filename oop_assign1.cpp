@@ -30,49 +30,52 @@ int main()
 		fgets(userInput, kBlockSize, stdin);
 		clearCR(userInput);
 
-		char fileProcessChar[2] = "";
+		char fileProcessChar[kBlockSize] = "";
 		char fileName[kBlockSize] = "";
 
 		int fileProcessResult = sscanf(userInput, "%s %s", fileProcessChar, fileName);
 
-		if (strcmp(userInput, "X") != 0 && strcmp(fileProcessChar, "Z") != 0)
-		{
-			parseUserInput(userInput);
-		}
-		else if (strcmp(fileProcessChar, "Z") == 0 && strlen(fileName) < 0 && fileProcessResult != 2)
-		{
-			FILE* fp = NULL;
-
-			fp = fopen(fileName, "r"); // file open using read text option
-			if (fp == NULL)
-			{
-				printf("Error: can't open %s for writing\n", fileName);
-				exitCode = 1;
-			}
-			else
-			{
-				char memBlock[kBlockSize];
-
-				while (fgets(memBlock, sizeof(memBlock), fp) != NULL)
-				{
-					clearCR(memBlock);
-					parseUserInput(memBlock);
-				}
-
-				if (fclose(fp) != 0)
-				{
-					printf("Error closing %s file\n", fileName);
-					exitCode = 1; // returns 1 if file close failed
-				}
-			}
-		}
-		else if (strcmp(fileProcessChar, "Z") == 0 && strlen(fileName) == 0)
-		{
-			printf("Invalid input. \n");
-		}
-		else if (strcmp(userInput, "X") == 0)
+		if (strcmp(fileProcessChar, "X") == 0)
 		{
 			exitCode = 1;
+		}
+		else
+		{
+			if (strcmp(fileProcessChar, "Z") != 0)
+			{
+				parseUserInput(userInput);
+			}
+			else if (strcmp(fileProcessChar, "Z") == 0 && fileProcessResult == 2)
+			{
+				FILE* fp = NULL;
+
+				fp = fopen(fileName, "r"); // file open using read text option
+				if (fp == NULL)
+				{
+					printf("Error: can't open %s for writing\n", fileName);
+					exitCode = 1;
+				}
+				else
+				{
+					char memBlock[kBlockSize];
+
+					while (fgets(memBlock, sizeof(memBlock), fp) != NULL)
+					{
+						clearCR(memBlock);
+						parseUserInput(memBlock);
+					}
+
+					if (fclose(fp) != 0)
+					{
+						printf("Error closing %s file\n", fileName);
+						exitCode = 1; // returns 1 if file close failed
+					}
+				}
+			}
+			else if (strcmp(fileProcessChar, "Z") == 0 && strlen(fileName) == 0)
+			{
+				printf("Invalid input. \n");
+			}
 		}
 	}
 
