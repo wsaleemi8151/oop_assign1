@@ -182,6 +182,10 @@ void  parseUserInput(char* input)
 					{
 						assessGrade(num);
 					}
+					else 
+					{
+						printf("Invalid input \n");
+					}
 				}
 				else
 				{
@@ -203,7 +207,6 @@ void  parseUserInput(char* input)
 	{
 		assessGrade(alpha);
 	}
-	printf("Invalid input \n");
 
 }
 
