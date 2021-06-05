@@ -23,9 +23,10 @@ void assessGrade(int num[]);
 
 /*---------------------Addition end G */
 
+void decimalInputFunction(char* input);
+void  parseUserInput(char* input);
 
-
-
+/*---------------------Addition end G - 05-06-2021 */
 
 int main()
 {
@@ -242,3 +243,83 @@ int checkRange(int value, int mini_value, int max_value)
 }
 
 /*----------------------Addition end G */
+
+
+
+
+
+/*Addition by G-------------------05-06-2021 */
+
+
+/* This function takes a string and call appropiate overload function. */
+void  parseUserInput(char* input)
+{
+
+	int num[6] = { 0 };
+	char alpha[5];
+	char test[8];
+
+	if (sscanf(input, "%[+/A-U]", &alpha) != 1)
+	{
+
+		if (sscanf(input, "%*c%[.]", &test) != 1)
+		{
+			if (sscanf(input, "%*c%*c%[.]", &test) != 1)
+			{
+				if (sscanf(input, "%*c%*c%*c%[.]", &test) != 1)
+				{
+					printf("\nThe is an interger number\n\n");
+					if (sscanf(input, "%d %d %d %d %d", &num[0], &num[1], &num[2], &num[3], &num[4]) == 0)
+					{
+						printf("Error in sscanf-2 in the interger input\n\n");
+					}
+					else
+					{
+						assessGrade(num);
+					}
+
+				}
+				else
+				{
+					printf("\nIt is a decimal number\n");
+					decimalInputFunction(input);
+				}
+			}
+			else
+			{
+				printf("\nIt is a decimal number\n");
+				decimalInputFunction(input);
+			}
+
+		}
+		else
+		{
+			printf("\nIt is a decimal number\n");
+			decimalInputFunction(input);
+		}
+
+	}
+	else
+	{
+		assessGrade(alpha);
+	}
+
+}
+
+
+/* This Function is used to avoid code duplication in the parseUserInput function. */
+void decimalInputFunction(char* input)
+{
+	double decimalInput;
+
+	if (sscanf(input, "%lf", &decimalInput) != 1)
+	{
+		printf("Error in sscanf-1\n\n");
+	}
+	else
+	{
+		assessGrade(decimalInput);
+	}
+}
+
+/*---------------------Addition end G 05-06-2021*/
