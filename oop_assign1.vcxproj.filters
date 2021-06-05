@@ -18,5 +18,13 @@
     <ClCompile Include="oop_assign1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="assessGrade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="assessGrade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

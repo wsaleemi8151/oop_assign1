@@ -139,7 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="assessGrade.cpp" />
     <ClCompile Include="oop_assign1.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="assessGrade.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
