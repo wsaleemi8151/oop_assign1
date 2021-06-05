@@ -203,6 +203,7 @@ void  parseUserInput(char* input)
 	{
 		assessGrade(alpha);
 	}
+	printf("Invalid input \n");
 
 }
 
@@ -218,7 +219,7 @@ void decimalInputFunction(char* input)
 
 	if (sscanf(input, "%lf", &decimalInput) != 1)
 	{
-		printf("Error in sscanf-1\n\n");
+		printf("Invalid Info \n");
 	}
 	else
 	{
