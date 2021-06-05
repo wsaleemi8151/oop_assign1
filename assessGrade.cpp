@@ -184,7 +184,7 @@ void  parseUserInput(char* input)
 					}
 					else 
 					{
-						printf("Invalid input \n");
+						printf("ERROR : Invalid Input \n");
 					}
 				}
 				else
@@ -248,23 +248,4 @@ int checkRange(int value, int mini_value, int max_value)
 		return 0;
 	}
 
-}
-
-/*
- * Function:    checkSpace()
- * Parameters:  char* input. A string pointer.
- * Returns:     It returns int.
- * Description: This function is used to if input string contains space. If yes, it returns 1, otherwise 0.
-*/
-int checkSpace(char* input)
-{
-	for (size_t i = 0; i < strlen(input); i++)
-	{
-		int result = isspace(input[i]);
-		if (result != 0)
-		{
-			return 1;
-		}
-	}
-	return 0;
 }

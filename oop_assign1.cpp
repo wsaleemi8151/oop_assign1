@@ -74,7 +74,7 @@ int main()
 			}
 			else if (strcmp(fileProcessChar, "Z") == 0 && strlen(fileName) == 0)
 			{
-				printf("Invalid input. \n");
+				printf("ERROR : Invalid Input \n");
 			}
 		}
 	}
