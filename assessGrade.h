@@ -1,10 +1,10 @@
 /*
-* FILE : assessGrade.h
-* PROJECT : PROG1385-21S-Sec1 Object-oriented Programming: assignment # 01
-* PROGRAMMER : Gursharan Singh and Waqar Ali Saleemi
-* FIRST VERSION : 2021-05-05
-* DESCRIPTION : A header file contains function definitions for parsing input 
-*				and print Student results.
+* FILE :          assessGrade.h
+* PROJECT :       PROG1385-21S-Sec1 Object-oriented Programming: assignment # 01
+* PROGRAMMER :    Gursharan Singh and Waqar Ali Saleemi
+* FIRST VERSION : 6 June, 2021
+* DESCRIPTION :   A header file contains function definitions for parsing input 
+*				  and print Student results.
 */
 
 #define kBlockSize 80

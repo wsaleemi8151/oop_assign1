@@ -1,11 +1,10 @@
 /*
-* FILE : assessGrade.cpp
-* PROJECT : PROG1385-21S-Sec1 Object-oriented Programming: assignment # 01
-* PROGRAMMER : Gursharan Singh and Waqar Ali Saleemi
-* FIRST VERSION : 2021-05-05
-* DESCRIPTION :
-* The functions in this file are used to Parse the input from user or fetch from a file
-*				and print If student is passed or failed.
+* FILE :          assessGrade.cpp
+* PROJECT :       PROG1385-21S-Sec1 Object-oriented Programming: assignment # 01
+* PROGRAMMER :    Gursharan Singh and Waqar Ali Saleemi
+* FIRST VERSION : 6 June, 2021
+* DESCRIPTION :   The functions in this file are used to Parse the input from user or fetch from a file
+*				  and print If student is passed or failed.
 */
 
 #include <iostream>
@@ -18,9 +17,9 @@
 
 
 /*
- * Function: assessGrade()
- * Parameters: double numGrade. A floating point number for student marks.
- * Returns: It returns void.
+ * Function:    assessGrade()
+ * Parameters:  double numGrade. A floating point number for student marks.
+ * Returns:     It returns void.
  * Description: This function is used to print student grade.
 */
 void assessGrade(double numGrade)
@@ -44,10 +43,10 @@ void assessGrade(double numGrade)
 
 
 /*
- * Function: assessGrade()
+ * Function:    assessGrade()
  * Parameters:  char* alphaGrade. An overloaded assessGrade() method
- *					which takes a pointer to the string.
- * Returns: It returns void.
+ *				which takes a pointer to the string.
+ * Returns:     It returns void.
  * Description: This function is used to print student grade.
 */
 void assessGrade(char* alphaGrade)
@@ -126,10 +125,10 @@ void assessGrade(char* alphaGrade)
 }
 
 /*
- * Function: assessGrade()
+ * Function:    assessGrade()
  * Parameters:  int num[]. An overloaded assessGrade() method
- *					which takes an array of integers for student's marks for assignments.
- * Returns: It returns void.
+ *				which takes an array of integers for student's marks for assignments.
+ * Returns:     It returns void.
  * Description: This function is used to print student grade.
 */
 void assessGrade(int num[])
@@ -160,9 +159,9 @@ void assessGrade(int num[])
 }
 
 /*
- * Function: parseUserInput()
+ * Function:    parseUserInput()
  * Parameters:  char* input. A pointer to input string.
- * Returns: It returns void.
+ * Returns:     It returns void.
  * Description: This function is used to parse the input provide by user or loaded from a file.
 */
 void parseUserInput(char* input)
@@ -186,9 +185,9 @@ void parseUserInput(char* input)
 }
 
 /*
- * Function: checkRange()
- * Parameters: int value, int mini_value, int max_value, where value is the numerical amount to check for validity.
- * Returns: It return 0 if the value is out of range and 1 if the value is within the specified range.
+ * Function:    checkRange()
+ * Parameters:  int value, int mini_value, int max_value, where value is the numerical amount to check for validity.
+ * Returns:     It return 0 if the value is out of range and 1 if the value is within the specified range.
  * Description: This function returns different values, indicating a value to be in or out of range.
 */
 int checkRange(int value, int mini_value, int max_value)
@@ -206,9 +205,9 @@ int checkRange(int value, int mini_value, int max_value)
 }
 
 /*
- * Function: checkSpace()
- * Parameters: char* input. A string pointer.
- * Returns: It returns int.
+ * Function:    checkSpace()
+ * Parameters:  char* input. A string pointer.
+ * Returns:     It returns int.
  * Description: This function is used to if input string contains space. If yes, it returns 1, otherwise 0.
 */
 int checkSpace(char* input)

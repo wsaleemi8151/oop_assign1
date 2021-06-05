@@ -1,12 +1,11 @@
 /*
-* FILE : assign1.cpp
-* PROJECT : PROG1385-21S-Sec1 Object-oriented Programming: assignment # 01
-* PROGRAMMER : Gursharan Singh and Waqar Ali Saleemi
-* FIRST VERSION : 2021-05-05
-* DESCRIPTION :
-* The functions in this file are used to get input from the user 
-*			or a file user provided in the input instruction
-*			and print if the Student is passed or failed.
+* FILE :          assign1.cpp
+* PROJECT :       PROG1385-21S-Sec1 Object-oriented Programming: assignment # 01
+* PROGRAMMER :    Gursharan Singh and Waqar Ali Saleemi
+* FIRST VERSION : 6 June, 2021
+* DESCRIPTION :   The functions in this file are used to get input from the user 
+*			      or a file user provided in the input instruction
+*			      and print if the Student is passed or failed.
 */
 
 #include <iostream>
@@ -75,9 +74,9 @@ int main()
 }
 
 /*
- * Function: clearCR()
- * Parameters: char* buf. A string pointer for which \n replaced with \0.
- * Returns: It returns void.
+ * Function:    clearCR()
+ * Parameters:  char* buf. A string pointer for which \n replaced with \0.
+ * Returns:     It returns void.
  * Description: This function is used to replace newline char \n to endline char \0.
 */
 void clearCR(char* buf)
