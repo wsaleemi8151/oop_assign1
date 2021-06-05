@@ -12,6 +12,9 @@
 #include<string.h>
 
 #pragma warning (disable : 4996)
+using namespace std;
+
+#define kBlockSize 80
 
 /* function prototypes */
 int checkRange(int value, int mini_value, int max_value);
@@ -20,7 +23,7 @@ void outputGrade(double numGrade);
 void assessGrade(char* alphaGrade);
 void assessGrade(double numGrade);
 void assessGrade(int num[]);
-
+void clearCR(char* buf);
 /*---------------------Addition end G */
 
 void decimalInputFunction(char* input);
@@ -30,25 +33,56 @@ void  parseUserInput(char* input);
 
 int main()
 {
-    std::cout << "Hello World!\n";
-    std::cout << "Hello World From Gursharan!\n";
+	char userInput[kBlockSize] = "";
+	int exitCode = 0;
+	while (exitCode < 1)
+	{
+		printf("Enter Student’s Grade(s) >>>");
+		fgets(userInput, kBlockSize, stdin);
+		clearCR(userInput);
+
+		char fileProcessChar[1];
+		char fileName[kBlockSize];
+
+		sscanf(userInput, "%s %s", fileProcessChar, fileName);
+
+		if (strcmp(userInput, "X") != 0 && strcmp(fileProcessChar, "Z") != 0)
+		{
+			parseUserInput(userInput);
+		}
+		else if (strcmp(fileProcessChar, "Z") == 0)
+		{
+			FILE* fp = NULL;
+
+			fp = fopen(fileName, "r"); // file open using read text option
+			if (fp == NULL)
+			{
+				printf("Error: can't open %s for writing\n", fileName);
+				exitCode = 1; // returns 1 if file open failed
+			}
+
+			char memBlock[kBlockSize];
+
+			while (fgets(memBlock, sizeof(memBlock), fp) != NULL)
+			{
+				clearCR(memBlock);
+				parseUserInput(memBlock);
+			}
+
+			if (fclose(fp) != 0)
+			{
+				printf("Error closing %s file\n", fileName);
+				exitCode = 1; // returns 1 if file close failed
+			}
+		}
+		else if (strcmp(userInput, "X") == 0)
+		{
+			exitCode = 1;
+		}
+	}
+
+	return exitCode;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
-
-
-
-
-
-/*Addition by G------------------- */
 
 /* Overload function1 - Take only 1 parameter : [char *] - for letter grade/special situation. */
 void assessGrade(char* alphaGrade)
@@ -202,7 +236,7 @@ void assessGrade(int num[])
 
 	if (returnVal != 0)
 	{
-		outputGrade(finalGrade);
+		assessGrade(finalGrade);
 	}
 }
 
@@ -242,62 +276,41 @@ int checkRange(int value, int mini_value, int max_value)
 
 }
 
-/*----------------------Addition end G */
-
-
-
-
-
-/*Addition by G-------------------05-06-2021 */
-
-
 /* This function takes a string and call appropiate overload function. */
 void  parseUserInput(char* input)
 {
-
 	int num[6] = { 0 };
 	char alpha[5];
 	char test[8];
 
 	if (sscanf(input, "%[+/A-U]", &alpha) != 1)
 	{
-
 		if (sscanf(input, "%*c%[.]", &test) != 1)
 		{
 			if (sscanf(input, "%*c%*c%[.]", &test) != 1)
 			{
 				if (sscanf(input, "%*c%*c%*c%[.]", &test) != 1)
 				{
-					printf("\nThe is an interger number\n\n");
-					if (sscanf(input, "%d %d %d %d %d", &num[0], &num[1], &num[2], &num[3], &num[4]) == 0)
-					{
-						printf("Error in sscanf-2 in the interger input\n\n");
-					}
-					else
+					if (sscanf(input, "%d %d %d %d %d", &num[0], &num[1], &num[2], &num[3], &num[4]) != 0)
 					{
 						assessGrade(num);
 					}
-
 				}
 				else
 				{
-					printf("\nIt is a decimal number\n");
 					decimalInputFunction(input);
 				}
 			}
 			else
 			{
-				printf("\nIt is a decimal number\n");
 				decimalInputFunction(input);
 			}
 
 		}
 		else
 		{
-			printf("\nIt is a decimal number\n");
 			decimalInputFunction(input);
 		}
-
 	}
 	else
 	{
@@ -323,3 +336,13 @@ void decimalInputFunction(char* input)
 }
 
 /*---------------------Addition end G 05-06-2021*/
+
+
+void clearCR(char* buf)
+{
+	char* whereCR = strchr(buf, '\n');
+	if (whereCR != NULL)
+	{
+		*whereCR = '\0';
+	}
+}
